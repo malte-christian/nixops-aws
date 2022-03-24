@@ -1,6 +1,6 @@
 # Configuration specific to the EC2 backend.
 
-{ config, pkgs, lib, utils, ... }:
+{ config, pkgs, lib, modulesPath, utils, ... }:
 
 with utils;
 with lib;
@@ -165,7 +165,7 @@ let
 
   nixosVersion = builtins.substring 0 5 (config.system.nixos.version or config.system.nixosVersion);
 
-  amis = import <nixpkgs/nixos/modules/virtualisation/ec2-amis.nix>;
+  amis = import "${modulesPath}/virtualisation/ec2-amis.nix";
 
 in
 
